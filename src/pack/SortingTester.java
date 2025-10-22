@@ -3,7 +3,7 @@ package pack;
 public class SortingTester {
 
 	public static void main(String[] args) {
-		int[] arr = new int[100];
+		int[] arr = new int[100000];
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = (int)((Math.random()+5)*10);
 		}
@@ -26,7 +26,7 @@ public class SortingTester {
 		
 		int[] arr4 = arr;
 		long startTime4 = System.currentTimeMillis();
-		QuadSorts.mergeSort(arr4);
+		QuadSorts.mergeSort(arr4, 0, arr4.length/2);
 		long endTime4 = System.currentTimeMillis();
 		
 		

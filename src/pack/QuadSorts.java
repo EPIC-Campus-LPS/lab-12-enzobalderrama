@@ -43,8 +43,47 @@ public class QuadSorts {
 		return arr;
 	}
 	
-	public static int[] mergeSort(int[] arr) {
-		return arr;
-	}
-	
+	public static void mergeSort(int arr[], int l, int r) {
+		if (l < r) {
+            int m = (l + r) / 2;
+            QuadSorts.mergeSort(arr, l, m);
+            QuadSorts.mergeSort(arr, m + 1, r);
+            sort(arr, l, m, r);
+        }
+    }
+    public static void sort(int arr[], int l, int m, int r) {
+        int leftarr = m - l + 1;
+        int rightarr = r - m;
+
+        int left[] = new int[leftarr];
+        int right[] = new int[rightarr];
+
+        for (int i = 0; i < leftarr; ++i)
+            left[i] = arr[l + i];
+        for (int j = 0; j < rightarr; ++j)
+            right[j] = arr[m + 1 + j];
+        int i = 0;
+        int j = 0;
+        int k = l;
+        while (i < leftarr && j < rightarr) {
+            if (left[i] <= right[j]) {
+                arr[k] = left[i];
+                i++;
+            } else {
+                arr[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < leftarr) {
+            arr[k] = left[i];
+            i++;
+            k++;
+        }
+        while (j < rightarr) {
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
+    }
 }
